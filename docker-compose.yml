@@ -1,15 +1,17 @@
-# ✅ Boleh hapus "version" karena sudah deprecated (opsional)
 services:
-  db:
+  db-ekstraPresensi:
     image: mysql:5.7
     container_name: smk-db
     ports:
-      - "3306:3306"
+      - "3307:3306"
     environment:
-      MYSQL_DATABASE: smk-bisa
+      MYSQL_DATABASE: ekstraDanPresensi
       MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_USER: smk1sumenep
+      MYSQL_USER: smk1ekstraDanPresensi
       MYSQL_PASSWORD: smkbisa
+    
+    command: --max_allowed_packet=4096M
+    
     volumes:
       - db_data:/var/lib/mysql
     networks:
@@ -21,4 +23,5 @@ volumes:
 
 networks:
   shared:
-    name: shared  # <-- ini penting untuk bikin network bisa digunakan antar proyek
+    name: shared  
+    
